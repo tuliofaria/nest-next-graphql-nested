@@ -1,4 +1,5 @@
 import { ObjectType, Field } from '@nestjs/graphql';
+import { Lesson } from './lesson';
 
 @ObjectType()
 export class CourseModule {
@@ -7,4 +8,7 @@ export class CourseModule {
 
   @Field()
   name: string;
+
+  @Field(type => Lesson)
+  firstLesson: Lesson;
 }

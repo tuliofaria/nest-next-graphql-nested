@@ -14,12 +14,17 @@ const Home = () => {
   const [data] = useQuery({ query: GET_COURSES })
   return (
     <>
-      <h1>Home</h1>
-      <p>
-        <Link href='/app/courses'>
-          <a>Courses</a>
-        </Link>
-      </p>
+      <h1>Course</h1>
+      <ul>
+        {data?.data &&
+          data?.data?.courses?.map((course) => (
+            <li key={course.id}>
+              <Link href={`/app/courses/${course.id}`}>
+                <a>{course.name}</a>
+              </Link>
+            </li>
+          ))}
+      </ul>
     </>
   )
 }

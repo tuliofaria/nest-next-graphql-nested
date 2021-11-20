@@ -14,6 +14,7 @@ interface IModule {
     id: string;
     name: string;
     lessons: ILesson[];
+    firstLesson: ILesson;
 }
 
 interface ICourse {
@@ -45,7 +46,8 @@ const courses : ICourse[] = []
         }
         course.modules.push({
             ...module,
-            lessons
+            lessons,
+            firstLesson: lessons[0]
         })
         
     }
