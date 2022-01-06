@@ -8,6 +8,7 @@ const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 interface ILesson {
     id: string;
     name: string;
+    metadata: any;
 }
 
 interface IModule {
@@ -41,7 +42,14 @@ const courses : ICourse[] = []
         for(let i=0; i<100; i++) {
             lessons.push({
                 id: `c${course.id}-m${k}-l${i}`,
-                name: `lesson ${i}`
+                name: `lesson ${i}`,
+                metadata: {
+                    moduleName: 'name',
+                    list: [1,2,3,4,5,6,7,8,9,10],
+                    sub:{
+                        sub: [1,2,3,4,5,6,7,8,9,10]
+                    }
+                }
             })
         }
         course.modules.push({
