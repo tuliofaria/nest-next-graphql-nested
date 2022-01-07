@@ -1,7 +1,7 @@
 import { Args, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
 import { Course } from './dtos/course';
 import { CourseModule } from './dtos/course-module';
-import { Image } from './dtos/image';
+import { Image, ImageParams } from './dtos/image';
 import { Lesson } from './dtos/lesson';
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -73,9 +73,9 @@ export class FakeDataResolver {
   @ResolveField('image', () => Image)
   async getImage(
     @Parent() course: Course,
-    @Args('id') id: string,
+    @Args('params') params: ImageParams,
   ): Promise<Image> {
-    console.log(course);
+    console.log(params);
     return {
       id: 'test',
       url: 'aaa',
